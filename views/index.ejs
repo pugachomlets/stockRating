@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/main.css">
+  <title>Stock Buyer</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Should I buy this stock?</h1>
+
+    <form action="/" id="form" class="form" method="POST">
+        <label  class="big" for="symbol">Stock Name:</label>
+        <input type="text" id="symbol" name="symbol">
+        <button type="submit" class="form-submit">Go</button>
+    </form>
+    <section id="cards" class="cards">
+      <%if (locals.data) {%>
+        <article class="card-item">
+          <h2 class="card-activity">
+            <%= data.price %> 
+          </h2>
+          <h2 class="card-activity">
+            <%= data.symbol %> 
+          </h2>
+          <div class="card-info">
+            <span class="card-type">
+              Rating : <%= data.rating %>
+            </span>
+          </div>
+          <div class="card-info">
+            <span class="card-type">
+              Rating Score : <%= data.ratingScore %> /5
+            </span>
+          </div>
+          <div class="card-info">
+            <span class="card-type">
+              Recommendation : <%= data.ratingRecommendation %>
+            </span>
+          </div>
+          <div class="card-info">
+            <span class="card-type">
+              Date : <%= data.date %>
+            </span>
+          </div>
+          <div class="card-info">
+            <span class="card-type">
+              <a href="https://site.financialmodelingprep.com/developer/docs">
+              Data provided by Financial Modeling Prep
+            </a>
+            </span>
+          </div>
+        </article>
+
+        <%}%>
+
+
+          <%if (locals.error) {%>
+            <div id="tag-error" class="tag-error">
+              <%=error%>
+            </div>
+            <%}%>
+    </section>
+  </div>
+
+</body>
+
+</html>
